@@ -3,7 +3,7 @@ services:
   dev_apache:
     build: './www/'
     depends_on:
-      - mysql
+      - dev_mysql
     networks:
       - frontend
       - backend
