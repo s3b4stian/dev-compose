@@ -7,7 +7,7 @@ docker-compose development environment for PHP.
 - Mysql 8.0
 
 ```
-git clone git clone https://github.com/s3b4stian/dev-compose.git
+git clone https://github.com/s3b4stian/dev-compose.git
 ```
 
 After need to build the environment

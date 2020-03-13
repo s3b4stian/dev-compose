@@ -1,6 +1,6 @@
 version: "3.2"
 services:
-  apache:
+  dev_apache:
     build: './www/'
     depends_on:
       - mysql
@@ -13,8 +13,8 @@ services:
     ports:
       - "80:80"
       - "443:443"
-  mysql:
-    image: mysql
+  dev_mysql:
+    image: mysql:latest
     command: --default-authentication-plugin=mysql_native_password
     networks:
       - backend
