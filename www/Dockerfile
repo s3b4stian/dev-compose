@@ -2,7 +2,7 @@ FROM ubuntu:19.10
 
 ## install packages
 RUN apt update -y && \
-    #apt upgrade -y && \
+    apt upgrade -y && \
     apt install -yq software-properties-common && \
     add-apt-repository ppa:ondrej/php && \
     apt update && \
@@ -18,32 +18,12 @@ RUN a2enmod actions fcgid alias proxy_fcgi rewrite ssl && \
 RUN mkdir -p /run/php/ && \
     mkdir /etc/apache2/ssl
 
-## Switch to working dir
-#WORKDIR /var/www/html
-
-## Copy all project file
-#COPY ./source.tar.gz /var/www/html/source.tar.gz
-#RUN tar -zxvf /var/www/html/source.tar.gz && \
-#    ls -la /var/www/html && \
-## Set proper file permissions
-#    find . -type f -exec chmod 644 {} + -o -type d -exec chmod 755 {} + && \
-#    chown -R root:root . && \
-#    chown -R www-data:www-data /var/www/html/public/support_uploads && \
-#    chmod -R 666 /var/www/html/src/Templates/_shared
-
-## Copy site configuration
-#COPY ./php/.env /var/www/html
-#COPY ./php/config.php /var/www/html/config
-
 ## PHP Configuration
 COPY ./php/php.ini /etc/php/7.4/fpm
-#COPY ./php/www.conf /etc/php/7.4/fpm/pool.d
 
 ## Apache configuration
 RUN rm /etc/apache2/sites-available/*
 
-#COPY ./apache/apache2.conf /etc/apache2
-#COPY ./apache/security.conf /etc/apache2/conf-available
 COPY ./apache/fcgid.conf /etc/apache2/mods-available
 COPY ./apache/site.conf /etc/apache2/sites-available/site.conf
 COPY ./apache/site_ssl.conf /etc/apache2/sites-available/site_ssl.conf
@@ -80,13 +60,6 @@ COPY ./supervisord/conf.d/php-fpm.conf /etc/supervisor/conf.d/php-fpm.conf
 # Startup script to change uid/gid (if environment variable passed) and start supervisord in foreground
 COPY ./start.sh /start.sh
 RUN chmod 755 /start.sh
-
-## Clean
-#RUN rm index.html && \
-    #rm -R ./.git && \
-#    rm *.sql && \
-#    rm source.tar.gz && \
-#   rm README.md
 
 EXPOSE 443
 EXPOSE 80
