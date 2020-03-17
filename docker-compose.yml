@@ -46,6 +46,7 @@ services:
     image: mongo-express
     networks:
       - backend
+      - frontend
     restart: always
     ports:
       - 8081:8081
