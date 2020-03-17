@@ -53,6 +53,14 @@ services:
     environment:
       - ME_CONFIG_MONGODB_ADMINUSERNAME=root
       - ME_CONFIG_MONGODB_ADMINPASSWORD=password
+      - ME_CONFIG_MONGODB_SERVER=dev_mongo
+  dev_memcached:
+    image: memcached
+    networks:
+      - backend
+    restart: always
+    ports:
+      - 11211:11211
 networks:
   frontend:
   backend:
