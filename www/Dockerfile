@@ -7,7 +7,8 @@ RUN apt update -y && \
     add-apt-repository ppa:ondrej/php && \
     apt update && \
     DEBIAN_FRONTEND=noninteractive apt install -yq supervisor apache2 libapache2-mod-fcgid curl sudo mysql-client \
-    php7.4 php7.4-fpm php7.4-common php7.4-xml php7.4-zip php7.4-mbstring php7.4-curl php7.4-mysql php7.4-pdo php-xdebug && \
+    php7.4 php7.4-fpm php7.4-common php7.4-xml php7.4-zip php7.4-mbstring php7.4-curl php7.4-mysql php7.4-pdo php-xdebug \ 
+    php-mongodb php-memcached php7.4-pgsql && \
     apt clean && rm -rf /var/lib/apt/lists/*
 
 

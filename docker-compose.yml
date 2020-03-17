@@ -23,6 +23,15 @@ services:
       - MYSQL_ROOT_PASSWORD=password
     ports:
       - "3306:3306"
+  dev_pgsql:
+    image: postgres
+    networks:
+      - backend
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=password
+    ports:
+      - "5432:5432"
 networks:
   frontend:
   backend:
