@@ -1,9 +1,13 @@
 version: "3.2"
 services:
+  dev_php:
+    build: './php/'
+    networks:
+      - backend
+    volumes:
+      - /home/sebastian/html:/var/www/html
   dev_apache:
     build: './www/'
-    depends_on:
-      - dev_mysql
     networks:
       - frontend
       - backend

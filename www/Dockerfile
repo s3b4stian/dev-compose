@@ -3,36 +3,27 @@ FROM ubuntu:19.10
 ## install packages
 RUN apt update -y && \
     apt upgrade -y && \
-    apt install -yq software-properties-common && \
-    add-apt-repository ppa:ondrej/php && \
-    apt update && \
-    DEBIAN_FRONTEND=noninteractive apt install -yq supervisor apache2 libapache2-mod-fcgid curl sudo mysql-client \
-    php7.4 php7.4-fpm php7.4-common php7.4-xml php7.4-zip php7.4-mbstring php7.4-curl php7.4-mysql php7.4-pdo php-xdebug \ 
-    php-mongodb php-memcached php7.4-pgsql && \
+    DEBIAN_FRONTEND=noninteractive apt install -yq apache2  && \
     apt clean && rm -rf /var/lib/apt/lists/*
 
-
-RUN a2enmod actions fcgid alias proxy_fcgi rewrite ssl && \
+RUN a2enmod actions alias proxy_fcgi rewrite ssl && \
     a2dissite 000-default default-ssl
 
 ## Create required dirs
 RUN mkdir -p /run/php/ && \
     mkdir /etc/apache2/ssl
 
-## PHP Configuration
-COPY ./php/php.ini /etc/php/7.4/fpm
-
 ## Apache configuration
 RUN rm /etc/apache2/sites-available/*
 
-COPY ./apache/fcgid.conf /etc/apache2/mods-available
+COPY ./apache/php7.4-fpm.conf /etc/apache2/conf-enabled/php7.4-fpm.conf
 COPY ./apache/site.conf /etc/apache2/sites-available/site.conf
 COPY ./apache/site_ssl.conf /etc/apache2/sites-available/site_ssl.conf
 
 RUN a2ensite site site_ssl
 
-ENV APACHE_RUN_USER  sebastian
-ENV APACHE_RUN_GROUP sebastian
+ENV APACHE_RUN_USER  www-data
+ENV APACHE_RUN_GROUP www-data
 ENV APACHE_LOG_DIR   /var/log/apache2
 ENV APACHE_PID_FILE  /var/run/apache2/apache2.pid
 ENV APACHE_RUN_DIR   /var/run/apache2
@@ -47,22 +38,13 @@ RUN mkdir -p $APACHE_RUN_DIR && \
 ## Apache SSL certificate
 ## Disable this when a valid certificate is available
 RUN openssl req -new -newkey rsa:2048 -days 365 -nodes -x509 -subj \
-    "/C=US/CN=localhost" \
+   "/C=US/CN=localhost" \
     -keyout /tmp/ssl.key -out /tmp/ssl.crt && \
     ls -la /tmp && \
     cp /tmp/ssl.key /etc/apache2/ssl && \
     cp /tmp/ssl.crt /etc/apache2/ssl
 
-## Supervisord configuration
-COPY ./supervisord/supervisord.conf /etc/supervisor/supervisord.conf
-COPY ./supervisord/conf.d/apache.conf /etc/supervisor/conf.d/apache.conf
-COPY ./supervisord/conf.d/php-fpm.conf /etc/supervisor/conf.d/php-fpm.conf
-
-# Startup script to change uid/gid (if environment variable passed) and start supervisord in foreground
-COPY ./start.sh /start.sh
-RUN chmod 755 /start.sh
-
 EXPOSE 443
 EXPOSE 80
 
-CMD ["/bin/bash", "/start.sh"]
+CMD ["/usr/sbin/apache2", "-D", "FOREGROUND"]
