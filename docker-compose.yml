@@ -4,6 +4,7 @@ services:
     build: './php/'
     networks:
       - backend
+    restart: always
     volumes:
       - /home/sebastian/html:/var/www/html
   dev_apache:
@@ -25,6 +26,7 @@ services:
     restart: always
     environment:
       - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_ROOT_HOST=%
     ports:
       - 3306:3306
   dev_pgsql:
