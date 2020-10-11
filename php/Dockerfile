@@ -8,7 +8,7 @@ RUN apt update -y && \
     apt update && \
     DEBIAN_FRONTEND=noninteractive apt install -yq curl sudo mysql-client \
     php7.4 php7.4-fpm php7.4-common php7.4-xml php7.4-zip php7.4-mbstring php7.4-curl php7.4-mysql php7.4-pdo php-xdebug \ 
-    php-mongodb php-memcached php7.4-pgsql && \
+    php7.4-mongodb php7.4-msgpack php7.4-igbinary php-memcached php7.4-pgsql && \
     apt clean && rm -rf /var/lib/apt/lists/*
 
 
