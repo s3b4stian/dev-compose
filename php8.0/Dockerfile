@@ -8,7 +8,7 @@ RUN apt update -y && \
     apt update && \
     DEBIAN_FRONTEND=noninteractive apt install -yq curl sudo mysql-client \
     php8.0 php8.0-fpm php8.0-common php8.0-xml php8.0-zip php8.0-mbstring php8.0-curl php8.0-mysql php8.0-pdo php-xdebug \ 
-    php8.0-mongodb php8.0-msgpack php8.0-igbinary php-memcached php8.0-pgsql && \
+    php8.0-msgpack php8.0-igbinary php-memcached php8.0-pgsql && \
     apt clean && rm -rf /var/lib/apt/lists/*
 
 
@@ -21,4 +21,4 @@ COPY ./conf/www.conf /etc/php/8.0/fpm/pool.d/www.conf
 
 EXPOSE 9000
 
-CMD ["/usr/sbin/php-fpm7.4","--nodaemonize","--fpm-config","/etc/php/8.0/fpm/php-fpm.conf"]
+CMD ["/usr/sbin/php-fpm8.0","--nodaemonize","--fpm-config","/etc/php/8.0/fpm/php-fpm.conf"]
