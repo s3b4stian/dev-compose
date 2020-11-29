@@ -7,9 +7,9 @@ RUN apt update -y && \
     add-apt-repository ppa:ondrej/php && \
     apt update && \
     DEBIAN_FRONTEND=noninteractive apt install -yq curl sudo mysql-client \
-    php8.0 php8.0-fpm php8.0-common php8.0-xml php8.0-zip php8.0-mbstring php8.0-curl php8.0-mysql php8.0-pdo php-xdebug \ 
-    php8.0-msgpack php8.0-igbinary php-memcached php8.0-pgsql && \
-    apt clean && rm -rf /var/lib/apt/lists/*
+    php8.0 php8.0-fpm php8.0-common php8.0-xml php8.0-zip php8.0-mbstring php8.0-curl php8.0-mysql php8.0-pdo php8.0-xdebug \ 
+    php8.0-msgpack php8.0-igbinary php8.0-memcached php8.0-pgsql && \
+    apt clean && rm -rf /var/lib/apt/lists/* 
 
 
 ## Create required dirs
