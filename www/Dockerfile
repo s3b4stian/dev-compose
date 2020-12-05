@@ -1,8 +1,8 @@
 FROM ubuntu:20.04
 
 ## install packages
-RUN apt update -y && \
-    apt upgrade -y && \
+RUN apt-get update -y && \
+    apt-get upgrade -y && \
     DEBIAN_FRONTEND=noninteractive apt install -yq apache2  && \
     apt clean && rm -rf /var/lib/apt/lists/*
 
