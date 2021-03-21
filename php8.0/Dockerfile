@@ -8,7 +8,7 @@ RUN apt-get update -y && \
     apt-get upgrade -y && \
     DEBIAN_FRONTEND=noninteractive apt-get install -yq curl sudo mysql-client \
     php8.0 php8.0-fpm php8.0-common php8.0-xml php8.0-zip php8.0-mbstring php8.0-curl php8.0-mysql php8.0-pdo php8.0-xdebug \ 
-    php8.0-msgpack php8.0-igbinary php8.0-memcached php8.0-pgsql && \
+    php8.0-msgpack php8.0-igbinary php8.0-memcached php8.0-pgsql php8.0-mongodb && \
     apt-get clean && rm -rf /var/lib/apt/lists/* 
 
 
