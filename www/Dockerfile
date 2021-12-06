@@ -16,7 +16,7 @@ RUN mkdir -p /run/php/ && \
 ## Apache configuration
 RUN rm /etc/apache2/sites-available/*
 
-COPY ./apache/php7.4-fpm.conf /etc/apache2/conf-enabled/php7.4-fpm.conf
+COPY ./apache/php-fpm.conf /etc/apache2/conf-enabled/php-fpm.conf
 COPY ./apache/site.conf /etc/apache2/sites-available/site.conf
 COPY ./apache/site_ssl.conf /etc/apache2/sites-available/site_ssl.conf
 

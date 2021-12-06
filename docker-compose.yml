@@ -1,7 +1,7 @@
 version: "3.2"
 services:
   dev_php:
-    build: './php8.0/'
+    build: './php8.1/'
     networks:
       - backend
     restart: always

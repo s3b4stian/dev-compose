@@ -4,6 +4,8 @@ docker-compose development environment for PHP.
 
 - Apache 2
 - PHP 7.4 via php-fpm
+- PHP 8.0 via php-fpm
+- PHP 8.1 via php-fpm
 - Mysql 8.0
 
 ```
