@@ -3,8 +3,8 @@ FROM ubuntu:20.04
 ## install packages
 RUN apt-get update -y && \
     apt-get upgrade -y && \
-    DEBIAN_FRONTEND=noninteractive apt install -yq apache2  && \
-    apt clean && rm -rf /var/lib/apt/lists/*
+    DEBIAN_FRONTEND=noninteractive apt-get install -yq apt-utils apache2  && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
 
 RUN a2enmod actions alias proxy_fcgi rewrite ssl && \
     a2dissite 000-default default-ssl
