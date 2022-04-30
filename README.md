@@ -12,12 +12,19 @@ docker-compose development environment for PHP.
 git clone https://github.com/s3b4stian/dev-compose.git
 ```
 
-After need to build the environment
+Before all need to build the environment
 ```
-sudo docker-compose build
+./build.sh
 ```
 
 And finally start all
 ```
-sudo docker-compose up
+./up.sh
 ```
+
+To stop all containers
+```
+./down.sh
+```
+
+
