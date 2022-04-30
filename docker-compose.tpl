@@ -6,7 +6,7 @@ services:
       - backend
     restart: always
     volumes:
-      - "/home/sebastian/html:/var/www/html"
+      - "/home/__CURRENT_USER__/html:/var/www/html"
   dev_apache:
     build: './www/'
     networks:
@@ -14,7 +14,7 @@ services:
       - backend
     restart: always
     volumes:
-      - "/home/sebastian/html:/var/www/html"
+      - "/home/__CURRENT_USER__/html:/var/www/html"
     ports:
       - 80:80
       - 443:443
@@ -25,7 +25,7 @@ services:
       - backend
     restart: always
     volumes:
-      - "/home/sebastian/data/mysql:/var/lib/mysql"
+      - "/home/__CURRENT_USER__/data/mysql:/var/lib/mysql"
     environment:
       - MYSQL_ROOT_PASSWORD=password
       - MYSQL_ROOT_HOST=%
@@ -37,7 +37,7 @@ services:
       - backend
     restart: always
     volumes:
-      - "/home/sebastian/data/postgresql:/var/lib/postgresql"
+      - "/home/__CURRENT_USER__/data/postgresql:/var/lib/postgresql"
     environment:
       - POSTGRES_PASSWORD=password
     ports:
