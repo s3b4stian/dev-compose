@@ -37,7 +37,7 @@ services:
       - backend
     restart: always
     volumes:
-      - "/home/__CURRENT_USER__/data/postgresql:/var/lib/postgresql"
+      - "/home/__CURRENT_USER__/data/postgresql:/var/lib/postgresql/data"
     environment:
       - POSTGRES_PASSWORD=password
     ports:
