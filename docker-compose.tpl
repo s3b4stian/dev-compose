@@ -71,6 +71,12 @@ services:
     restart: always
     ports:
       - 11211:11211
+  dev_redis:
+    image: redis:7.0.5-alpine
+    restart: always
+    ports:
+      - '6379:6379'
+    command: redis-server --save 20 1 --loglevel warning --requirepass password
 networks:
   frontend:
   backend:
