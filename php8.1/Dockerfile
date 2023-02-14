@@ -19,6 +19,6 @@ RUN mkdir -p /run/php/
 COPY ./conf/php.ini /etc/php/8.1/fpm/php.ini
 COPY ./conf/www.conf /etc/php/8.1/fpm/pool.d/www.conf
 
-EXPOSE 9000
+EXPOSE 9001
 
 CMD ["/usr/sbin/php-fpm8.1","--nodaemonize","--fpm-config","/etc/php/8.1/fpm/php-fpm.conf"]

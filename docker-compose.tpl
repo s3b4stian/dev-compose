@@ -1,8 +1,16 @@
 version: "3.2"
 services:
-  dev_php:
-    container_name: dev_phpfpm
+  dev_php_82:
+    container_name: dev_phpfpm_82
     build: './php8.2/'
+    networks:
+      - backend
+    restart: always
+    volumes:
+      - "/home/__CURRENT_USER__/html:/var/www/html"
+  dev_php_81:
+    container_name: dev_phpfpm_81
+    build: './php8.1/'
     networks:
       - backend
     restart: always
