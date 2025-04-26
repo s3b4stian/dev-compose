@@ -1,16 +1,16 @@
 version: "3.2"
 services:
-  dev_php_82:
-    container_name: dev_phpfpm_82
-    build: './php8.2/'
+  dev_php_84:
+    container_name: dev_phpfpm_84
+    build: './php8.4/'
     networks:
       - backend
     restart: always
     volumes:
       - "/home/__CURRENT_USER__/html:/var/www/html"
-  dev_php_81:
-    container_name: dev_phpfpm_81
-    build: './php8.1/'
+  dev_php_83:
+    container_name: dev_phpfpm_83
+    build: './php8.3/'
     networks:
       - backend
     restart: always
@@ -88,7 +88,7 @@ services:
       - 11211:11211
   dev_redis:
     container_name: dev_redis
-    image: redis:7.0.5-alpine
+    image: redis:7.4-alpine
     restart: always
     ports:
       - '6379:6379'
