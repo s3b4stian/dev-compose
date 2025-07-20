@@ -1,4 +1,3 @@
-version: "3.2"
 services:
   dev_php_84:
     container_name: dev_phpfpm_84
