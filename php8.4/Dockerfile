@@ -7,7 +7,7 @@ RUN apt-get update -y && \
     apt-get update -y
 
 ## separate layer
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -yq apt-utils curl sudo mysql-client \
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -yq apt-utils curl git sudo mysql-client \
     php8.4 php8.4-fpm php8.4-common php8.4-xml php8.4-zip php8.4-mbstring php8.4-curl php8.4-mysql php8.4-pdo php8.4-xdebug \ 
     php8.4-msgpack php8.4-igbinary php8.4-memcached php8.4-pgsql php8.4-mongodb php8.4-redis && \
     apt-get clean && rm -rf /var/lib/apt/lists/* 

@@ -6,7 +6,7 @@ YELLOW='\e[93m'
 NC='\e[0m'
 
 ## Infection version
-VER_INFECTION=0.29.14
+VER_INFECTION=0.30.3
 
 cd /tmp/php_tools
 
