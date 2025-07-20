@@ -7,7 +7,7 @@ RUN apt-get update -y && \
     apt-get update -y
 
 ## separate layer
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -yq apt-utils curl git sudo mysql-client \
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -yq apt-utils curl git sudo mysql-client postgresql-client \
     php8.3 php8.3-fpm php8.3-common php8.3-xml php8.3-zip php8.3-mbstring php8.3-curl php8.3-mysql php8.3-pdo php8.3-xdebug \ 
     php8.3-msgpack php8.3-igbinary php8.3-memcached php8.3-pgsql php8.3-mongodb php8.3-redis && \
     apt-get clean && rm -rf /var/lib/apt/lists/* 
@@ -22,6 +22,8 @@ COPY ./conf/www.conf /etc/php/8.3/fpm/pool.d/www.conf
 ## PHP tools
 COPY ./tools/* /php_tools
 RUN chmod +x /php_tools/*.sh && /php_tools/install-php-tools.sh
+
+WORKDIR /var/www/html
 
 EXPOSE 9000
 

@@ -29,8 +29,8 @@ services:
       - 443:443
   dev_mysql:
     container_name: dev_mysql
-    image: mysql:latest
-    command: --default-authentication-plugin=mysql_native_password
+    image: mysql:9
+#    command: --default-authentication-plugin=mysql_native_password
     networks:
       - backend
     restart: always
@@ -43,7 +43,7 @@ services:
       - 3306:3306
   dev_pgsql:
     container_name: dev_postgres
-    image: postgres
+    image: postgres:17
     networks:
       - backend
     restart: always
@@ -88,6 +88,8 @@ services:
   dev_redis:
     container_name: dev_redis
     image: redis:7.4-alpine
+    networks:
+      - backend
     restart: always
     ports:
       - '6379:6379'
