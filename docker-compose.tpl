@@ -1,6 +1,7 @@
 services:
   dev_php_84:
     container_name: dev_phpfpm_84
+    hostname: php84-dev-container
     build: './php8.4/'
     networks:
       - backend
@@ -9,6 +10,7 @@ services:
       - "/home/__CURRENT_USER__/html:/var/www/html"
   dev_php_83:
     container_name: dev_phpfpm_83
+    hostname: php83-dev-container
     build: './php8.3/'
     networks:
       - backend
@@ -17,6 +19,7 @@ services:
       - "/home/__CURRENT_USER__/html:/var/www/html"
   dev_apache:
     container_name: dev_apache
+    hostname: apache-dev-container
     build: './www/'
     networks:
       - frontend
@@ -29,6 +32,7 @@ services:
       - 443:443
   dev_mysql:
     container_name: dev_mysql
+    hostname: mysql-dev-container
     image: mysql:9
 #    command: --default-authentication-plugin=mysql_native_password
     networks:
@@ -43,6 +47,7 @@ services:
       - 3306:3306
   dev_pgsql:
     container_name: dev_postgres
+    hostname: postgres-dev-container
     image: postgres:17
     networks:
       - backend
@@ -55,6 +60,7 @@ services:
       - 5432:5432
   dev_mongo:
     container_name: dev_mongo
+    hostname: mongo-dev-container
     image: mongo
     networks:
       - backend
@@ -66,6 +72,7 @@ services:
       - 27017:27017
   dev_mongo_express:
     container_name: dev_mongo_express
+    hostname: mongo-express-dev-container
     image: mongo-express
     networks:
       - backend
@@ -79,6 +86,7 @@ services:
       - ME_CONFIG_MONGODB_SERVER=dev_mongo
   dev_memcached:
     container_name: dev_memcached
+    hostname: memcached-dev-container
     image: memcached
     networks:
       - backend
