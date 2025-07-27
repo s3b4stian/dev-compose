@@ -14,6 +14,8 @@ rm /tmp/php_tools/*
 ## ------------------
 printf "${RED}Download PHP tools${NC}\n"
 
+### PHP stan
+curl https://api.github.com/repos/phpstan/phpstan/releases/latest | grep "phpstan.phar" | cut -d : -f 2,3 | tr -d \" | head -n 2 | tail -n 1 | wget -i - -P /tmp/php_tools
 ### PHP cs Fixer
 #wget https://github.com/FriendsOfPHP/PHP-CS-Fixer/releases/download/$VER_CS_FIXER/php-cs-fixer.phar -P /tmp/php_tools
 curl -sL https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/releases/latest | grep "php-cs-fixer.phar" | cut -d : -f 2,3 | tr -d \" | head -n 2 | tail -n 1 | wget -i - -P /tmp/php_tools
@@ -34,12 +36,14 @@ printf "${RED}Make all executable${NC}\n"
 
 cd /tmp/php_tools
 
+mv phpstan.phar phpstan
 mv php-cs-fixer.phar php-cs-fixer
 mv composer-stable.phar composer
 mv phpunit.phar phpunit
 mv infection.phar infection
 mv phpDocumentor.phar php-doc
 
+chmod +x phpstan
 chmod +x php-cs-fixer
 chmod +x composer
 chmod +x phpunit
@@ -63,6 +67,7 @@ sudo cp /tmp/php_tools/* /usr/local/sbin
 # make link to permit the compressed phar to work
 #sudo ln -s /usr/local/sbin/php-doc.phar php-doc
 
+phpstan --version
 PHP_CS_FIXER_IGNORE_ENV=1 php-cs-fixer --version
 composer --version
 phpunit --version

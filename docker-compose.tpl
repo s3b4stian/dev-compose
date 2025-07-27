@@ -8,6 +8,8 @@ services:
     restart: always
     volumes:
       - "/home/__CURRENT_USER__/html:/var/www/html"
+      - "/home/__CURRENT_USER__/.ssh:/home/ubuntu/.ssh"
+      - "/home/__CURRENT_USER__/.gitconfig:/home/ubuntu/.gitconfig"
   dev_php_83:
     container_name: dev_phpfpm_83
     hostname: php83-dev-container
@@ -17,6 +19,8 @@ services:
     restart: always
     volumes:
       - "/home/__CURRENT_USER__/html:/var/www/html"
+      - "/home/__CURRENT_USER__/.ssh:/home/ubuntu/.ssh"
+      - "/home/__CURRENT_USER__/.gitconfig:/home/ubuntu/.gitconfig"
   dev_apache:
     container_name: dev_apache
     hostname: apache-dev-container

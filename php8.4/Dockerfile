@@ -12,6 +12,9 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -yq apt-utils curl git sudo m
     php8.4-msgpack php8.4-igbinary php8.4-memcached php8.4-pgsql php8.4-mongodb php8.4-redis && \
     apt-get clean && rm -rf /var/lib/apt/lists/* 
 
+## set ubuntu user password
+RUN echo "ubuntu:ubuntu" | chpasswd
+
 ## Create required dirs
 RUN mkdir -p /run/php/ && mkdir /php_tools
 
