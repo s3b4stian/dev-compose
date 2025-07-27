@@ -1,6 +1,6 @@
 # Dev Compose
 
-## Environment
+### Environment
 
 Docker Compose development environment for PHP.
 
@@ -13,9 +13,9 @@ Docker Compose development environment for PHP.
 - Memcached
 - Redis
 
-The environment mounts the `~/html` directory in container's `/var/www/html`, also the `.gitconfig` anche `.ssh` directory from the user's home.
+The environment mounts the `~/html` directory in container's `/var/www/html`, also the `.gitconfig` file and `.ssh` directory from the user's home.
 
-## PHP tools
+### PHP tools
 
 Inside the container are installed
 
@@ -28,7 +28,7 @@ Inside the container are installed
 
 All tools above are available from every location in filesystem. phpDocumentor is named `php-doc`.
 
-## Use the stack
+### Use the stack
 
 ```bash
 git clone https://github.com/s3b4stian/dev-compose.git
@@ -53,5 +53,3 @@ To stop all containers
 ```bash
 ./down.sh
 ```
-
-
