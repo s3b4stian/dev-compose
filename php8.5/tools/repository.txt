@@ -1,0 +1,11 @@
+linna/app
+linna/auth-mapper-pgsql
+linna/csrf-guard
+linna/dotenv
+linna/framework
+linna/typed-array
+linna/auth-mapper-mysql
+linna/auth-mapper-test-trait
+linna/db-dumps
+linna/filter
+linna/http-message

@@ -1,19 +1,8 @@
 services:
-  dev_php_84:
-    container_name: dev_phpfpm_84
-    hostname: php84-dev-container
-    build: './php8.4/'
-    networks:
-      - backend
-    restart: always
-    volumes:
-      - "/home/__CURRENT_USER__/html:/var/www/html"
-      - "/home/__CURRENT_USER__/.ssh:/home/ubuntu/.ssh"
-      - "/home/__CURRENT_USER__/.gitconfig:/home/ubuntu/.gitconfig"
-  dev_php_83:
-    container_name: dev_phpfpm_83
-    hostname: php83-dev-container
-    build: './php8.3/'
+  dev_php_85:
+    container_name: dev_phpfpm_85
+    hostname: php85-dev-container
+    build: './php8.5/'
     networks:
       - backend
     restart: always

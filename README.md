@@ -5,8 +5,8 @@
 Docker Compose development environment for PHP.
 
 - Apache 2
-- PHP 8.3 via php-fpm
 - PHP 8.4 via php-fpm
+- PHP 8.5 via php-fpm
 - Mysql 9
 - Postgresql 17
 - Mongodb + Express
